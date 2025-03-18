@@ -5,9 +5,9 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
+import me.wiliam.velocitytab.api.VelocityTabAPI; // Stelle sicher, dass du die API korrekt importierst.
 
 public class PlayerUnvanishEvent extends Event implements Cancellable {
-
 
     private static final HandlerList handlers = new HandlerList();
     private final Player player;
@@ -15,6 +15,9 @@ public class PlayerUnvanishEvent extends Event implements Cancellable {
 
     public PlayerUnvanishEvent(@NotNull final Player player) {
         this.player = player;
+
+        // Spieler für VelocityTab wieder sichtbar machen
+        VelocityTabAPI.unVanishPlayer(player);
     }
 
     /**
