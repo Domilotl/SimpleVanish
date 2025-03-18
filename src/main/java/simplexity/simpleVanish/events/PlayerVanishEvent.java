@@ -6,6 +6,7 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 import simplexity.simpleVanish.objects.PlayerVanishSettings;
+import me.wiliam.velocitytab.api.VelocityTabAPI; // Stelle sicher, dass du die richtige API-Import hast.
 
 public class PlayerVanishEvent extends Event implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
@@ -13,10 +14,12 @@ public class PlayerVanishEvent extends Event implements Cancellable {
     private final PlayerVanishSettings settings;
     private boolean cancelled;
 
-
     public PlayerVanishEvent(@NotNull final Player player, PlayerVanishSettings settings) {
         this.player = player;
         this.settings = settings;
+
+        // Spieler für VelocityTab unsichtbar machen
+        VelocityTabAPI.vanishPlayer(player);
     }
 
     /**
